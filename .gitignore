@@ -1,7 +1,35 @@
+# Python
 .venv/
 __pycache__/
 *.egg-info/
+build/
+dist/
 .pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local Claude Code settings (personal, not shared)
+.claude/settings.local.json
+
+# Secrets
+.env
+.env.*
+
+# Capture and reconstruction data (large, not for git)
 frames/
 *.mp4
 *.mov
+*.jpg
+*.png
+*.ply
+*.obj
+*.stl
+*.glb
+colmap/
+*.db
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
