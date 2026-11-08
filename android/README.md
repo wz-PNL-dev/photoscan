@@ -12,10 +12,10 @@ then view the model and set its real-world scale from measured distances.
 | 3D viewer: orbit (tilt included), pan, pinch zoom, reset (SceneView / Filament) | Built, not yet run on a device |
 | Two-point calibration and measurement | Built, not yet run on a device |
 | Loading the bundled sample model | Built, not yet run on a device |
-| **Reconstruction (video → model)** | **Not built.** `UnavailableEngine` refuses to run and says so |
+| **Reconstruction (video → model)** | **Drafted, not compiled.** Native COLMAP with a JNI bridge, OpenImageIO removed. See `native/README.md`. Until `libphotoscan_native.so` is packaged, `UnavailableEngine` refuses to run |
 
-The reconstruction step is the planned on-device native COLMAP port. It is not
-in this build. See "Reconstruction" below.
+The reconstruction step is the on-device native COLMAP port. The code is written but
+not yet compiled. Build steps and known gaps are in `native/README.md`.
 
 ## Build
 

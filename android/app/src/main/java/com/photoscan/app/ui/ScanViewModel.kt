@@ -5,6 +5,8 @@ import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.photoscan.app.pipeline.FrameExtractor
+import com.photoscan.app.pipeline.NativeColmap
+import com.photoscan.app.pipeline.NativeColmapEngine
 import com.photoscan.app.pipeline.ReconstructionEngine
 import com.photoscan.app.pipeline.ReconstructionUnavailableException
 import com.photoscan.app.pipeline.UnavailableEngine
@@ -29,8 +31,9 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
     private val _state = MutableStateFlow<State>(State.Idle)
     val state: StateFlow<State> = _state.asStateFlow()
 
-    // Swap in a real backend here once the native COLMAP build exists.
-    private val engine: ReconstructionEngine = UnavailableEngine()
+    // COLMAP when libphotoscan_native.so is packaged; otherwise refuse to run.
+    private val engine: ReconstructionEngine =
+        if (NativeColmap.isAvailable) NativeColmapEngine() else UnavailableEngine()
 
     fun process(video: Uri) {
         if (_state.value is State.Running) return

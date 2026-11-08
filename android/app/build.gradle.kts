@@ -34,6 +34,34 @@ android {
     buildFeatures {
         compose = true
     }
+
+    ndkVersion = "27.2.12479018"
+
+    // Native COLMAP is opt-in: build with -PphotoscanNative -PcolmapSrc=<patched tree>
+    // -PprefixPath=<deps install>. See android/native/README.md.
+    if (project.hasProperty("photoscanNative")) {
+        defaultConfig {
+            ndk {
+                abiFilters += listOf("arm64-v8a")
+            }
+            externalNativeBuild {
+                cmake {
+                    arguments += listOf(
+                        "-DCOLMAP_SRC=${project.property("colmapSrc")}",
+                        "-DPREFIX_PATH=${project.property("prefixPath")}",
+                        "-DANDROID_STL=c++_static",
+                    )
+                    cppFlags += listOf("-std=c++17")
+                }
+            }
+        }
+        externalNativeBuild {
+            cmake {
+                path = file("../native/CMakeLists.txt")
+                version = "3.22.1"
+            }
+        }
+    }
 }
 
 kotlin {
