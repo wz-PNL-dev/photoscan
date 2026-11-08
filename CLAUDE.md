@@ -26,6 +26,8 @@ src/photoscan/   package code (src layout)
   frames.py      video -> JPEG frames (OpenCV, imported lazily)
   scale.py       scale factor from reference distances; pure Python, no deps
 tests/           pytest tests, one test_<module>.py per module
+android/         Android app (Kotlin, Compose, SceneView); see android/README.md
+tools/           helper scripts, e.g. make_sample_model.py
 pyproject.toml   metadata, dependencies, tool config
 .claude/         Claude Code settings and rules
 ```
