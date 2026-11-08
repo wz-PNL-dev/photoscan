@@ -9,9 +9,9 @@ functions compute the factor that brings the model to true size.
 from __future__ import annotations
 
 import math
+from collections.abc import Sequence
 from dataclasses import dataclass
 from statistics import mean, pstdev
-from typing import Sequence
 
 Point = tuple[float, float, float]
 
